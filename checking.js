@@ -1,29 +1,31 @@
-
-(function () {
+function createCheck (id) {
+	console.log(1)
 	var arr = ['a','b','c','d','e','f','g','h','i','j','k',
-			   'l','m','n','o','p','q','r','s','t','u','v',
-			   'w','x','y','z','0','1','2','3','4','5','6',
-			   '7','8','9',]
+					   'l','m','n','o','p','q','r','s','t','u','v',
+					   'w','x','y','z','0','1','2','3','4','5','6',
+					   '7','8','9','A','B','C','D','E','F','G','H',
+					   'I','I','J','K','L','M','N','O','P','Q','R',
+					   'S','T','U','V','W','X','Y','Z']
     // 可以 随意添加各种颜色
 	var colors = ['blue', 'orange','deeppink','yellow','gray','chocolate', 'cadetblue'],
 		// 用来存放 4个字符串的
 		value = [],
 		// 通过id获取dom元素
-		checking = getId('checking'),
-		checkVal = getId('checkVal'),
+		checking = getId(id),
 		btn = getId('btn'),
 		cvs = document.createElement('canvas'),
 		ctx = cvs.getContext("2d"),
-		valGet, valCreate,
-		h = 35,
+		valCreate,
+		h = h || 35,
+		w = w || 120,
 		// 背景的索引
 		bgCount;
 
 	cvs.height = h;
-	cvs.width = 120;
-
-	checking.addEventListener('click', function () {
-		
+	cvs.width = w;
+	create()
+	
+	function create () {
 		// 先生成4个字符放到数组里 
 		for(var i = 0; i < 4; i++){
 			value.push(arr[Math.round(Math.random() * (arr.length - 1))])
@@ -57,17 +59,10 @@
 		value = [];
 		// 展示到页面上
         checking.appendChild(img);
-	})
-	btn.addEventListener('click', function () {
-		// 获取input输入框的值
-		valGet = checkVal.value;
-		if(valGet === valCreate){
-			console.log('验证码输入正确');
-		} else {
-			console.log('验证码输入错误');
-		}
-	})
-	function getId (id) {
-		return document.getElementById(id);
+        
 	}
-})()
+	return valCreate;
+	function getId(id) {
+	    return document.getElementById(id)
+	}
+}

@@ -8,9 +8,19 @@
 	</style>
 </head>
 <body> 
-	<input type="text" name="password" id="checkVal">
-	<button id="btn">确定</button>
-	<div id="checking" style="width:120px">点击获取验证码</div>
+	
+	<div id="checking"></div>
 	<script src="./checking.js"></script>
+	<script>
+	// 传入 dom的 id   和宽高  返回验证码的值
+		var checkingvalue = createCheck('checking');
+		console.log(checkingvalue)
+		var checking = document.getElementById('checking');
+		checking.onclick = function () {
+			checkingvalue = createCheck('checking');
+			console.log(checkingvalue)
+		}
+		
+	</script>
 </body>
 </html>
